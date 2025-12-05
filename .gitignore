@@ -1,0 +1,43 @@
+# Unity generated files
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+
+# User-specific
+UserSettings/
+MemoryCaptures/
+
+# Visual Studio / Rider / JetBrains
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.ide/
+*.ipr
+*.iws
+*.iml
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Package manager
+*.pidb.meta
+*.unitypackage
+
+# Crash reports
+sysinfo.txt
+
