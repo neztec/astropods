@@ -32,11 +32,15 @@ public class AbilitySegment : MonoBehaviour
 
     AbilityRing ringParent;
 
+    float startDistance;
+    AbilityRing.Slot slot;
+
     public void Init(Transform ship, float radius, float pull, AbilityRing.Slot slot, AbilityRing ring)
     {
         center = ship;
         baseRadius = radius;
         maxPull = pull;
+        this.slot = slot;
         id = slot.id;
         a0 = slot.startAngle;
         a1 = slot.endAngle;
@@ -83,6 +87,7 @@ public class AbilitySegment : MonoBehaviour
                 return;
 
             dragging = true;
+            startDistance = Vector2.Distance(mouse, center.position);
             InputState.Value = AbilityInputState.Targeting;
         }
 
@@ -101,23 +106,37 @@ public class AbilitySegment : MonoBehaviour
         currentPull = Mathf.Clamp(raw.magnitude, 0, maxPull);
         currentDir = raw.normalized;
 
-        radius = baseRadius + currentPull;
+        float currentDistance = Vector2.Distance(mouse, center.position);
+        float offsetDistance = currentDistance - startDistance;
+
+        radius = baseRadius + offsetDistance;
+        radius = Mathf.Clamp(radius, baseRadius, maxPull);
+
+        // radius = baseRadius + currentPull;
         DrawArc(radius);
         UpdateCollider(baseRadius, radius, 0.2f);
 
         // Update stem in local space of ring
-        stemLine.enabled = false;
-        Vector3 localDir = transform.parent.InverseTransformVector(currentDir * radius);
-        stemLine.SetPosition(0, Vector3.zero);
-        stemLine.SetPosition(1, localDir);
+        // stemLine.enabled = false;
+        // Vector3 localDir = transform.parent.InverseTransformVector(currentDir * radius);
+        // stemLine.SetPosition(0, Vector3.zero);
+        // stemLine.SetPosition(1, localDir);
 
         // Rotate the ring so the dragged segment mid-point points toward the pointer
         if (dragging && ringParent != null)
         {
-            float targetAngle = Mathf.Atan2(currentDir.y, currentDir.x) * Mathf.Rad2Deg;
-            float segmentMidAngle = (a0 + a1) / 2f;
-            float rotationDelta = targetAngle - segmentMidAngle;
-            ringParent.transform.rotation = Quaternion.Euler(0, 0, rotationDelta);
+            Vector2 currentDir = (mouse - (Vector2)center.position).normalized;
+
+            //  use AimSegment in AbilityRing to handle this
+            // ringParent.AimSegment(currentDir);
+
+            float segmentMidAngle = (slot.startAngle + slot.endAngle) * 0.5f;
+            ringParent.AimSegment(currentDir, segmentMidAngle);
+
+            // float targetAngle = Mathf.Atan2(currentDir.y, currentDir.x) * Mathf.Rad2Deg;
+            // float segmentMidAngle = (a0 + a1) / 2f;
+            // float rotationDelta = targetAngle - segmentMidAngle;
+            // ringParent.transform.rotation = Quaternion.Euler(0, 0, rotationDelta);
         }
 
 
@@ -154,7 +173,10 @@ public class AbilitySegment : MonoBehaviour
 
     bool Hit(Vector2 world)
     {
-        Vector2 local = world - (Vector2)center.position;
+
+        //Vector2 local = world - (Vector2)center.position;
+        Vector2 local =
+    ringParent.transform.InverseTransformPoint(world);
         float d = local.magnitude;
         if (d < baseRadius - 0.2f || d > baseRadius + maxPull)
             return false;
@@ -178,6 +200,13 @@ public class AbilitySegment : MonoBehaviour
 
     void UpdateCollider(float innerRadius, float outerRadius, float padding = 0.2f)
     {
+        // float rotationOffset = ringParent.GetRotationOffset();
+        // a0 = this.slot.startAngle + rotationOffset;
+        // a1 = this.slot.endAngle + rotationOffset;
+        a0 = slot.startAngle;
+        a1 = slot.endAngle;
+
+
         innerRadius = Mathf.Max(innerRadius - padding * 3, 0);
         int pointsCount = ARC_POINTS * 2;
         Vector2[] points = new Vector2[pointsCount];

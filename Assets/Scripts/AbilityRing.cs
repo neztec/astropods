@@ -5,7 +5,9 @@ public class AbilityRing : MonoBehaviour
     public Transform ship;
 
     public float baseRadius = 3.5f;
-    public float maxPull = 2.0f;
+    public float maxPull = 6.0f;
+
+    private float rotationOffset = 0f;
 
     [System.Serializable]
     public struct Slot
@@ -38,13 +40,21 @@ public class AbilityRing : MonoBehaviour
 
         // ring should stay upright in world space and only rotate when AimSegment is called
         transform.rotation = Quaternion.identity;
-
+        transform.Rotate(0, 0, rotationOffset);
     }
 
-    public void AimSegment(Vector2 direction)
+    public void AimSegment(Vector2 direction, float segmentMidAngle)
     {
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        float targetAngle =
+            Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        rotationOffset = targetAngle - segmentMidAngle;
+    }
+
+
+    public float GetRotationOffset()
+    {
+        return rotationOffset;
     }
 
 }

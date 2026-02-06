@@ -25,6 +25,8 @@ public class ShipCore : MonoBehaviour
 {
     public AbilityRing ring;
     private ShipState shipState;
+    public int cargoCapacity = 10; // temp, this shouldn't be public
+
     public readonly Subject<ShipState> ShipStateStream = new Subject<ShipState>();
 
     CompositeDisposable abilityDisposables = new CompositeDisposable();

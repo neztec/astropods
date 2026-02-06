@@ -17670,7 +17670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &527838979
 Transform:
   m_ObjectHideFlags: 0
@@ -17679,7 +17679,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527838978}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.5, y: -7.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17690,7 +17690,7 @@ Transform:
   - {fileID: 1120710633}
   - {fileID: 1302942043}
   - {fileID: 627676842}
-  m_Father: {fileID: 1025641805}
+  m_Father: {fileID: 1015476253}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &527838980
 MonoBehaviour:
@@ -17705,6 +17705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ring: {fileID: 0}
+  cargoCapacity: 10
 --- !u!114 &527838981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38123,6 +38124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ring: {fileID: 0}
+  cargoCapacity: 10
 --- !u!58 &652326265
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -55178,6 +55180,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1015476252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1015476253}
+  m_Layer: 0
+  m_Name: Defunct Ships
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1015476253
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015476252}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1223082347}
+  - {fileID: 1707638349}
+  - {fileID: 527838979}
+  m_Father: {fileID: 1025641805}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1025641804
 GameObject:
   m_ObjectHideFlags: 0
@@ -55208,11 +55244,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 532073934}
-  - {fileID: 1223082347}
   - {fileID: 652326263}
   - {fileID: 2040559954}
-  - {fileID: 1707638349}
-  - {fileID: 527838979}
   - {fileID: 1315782547}
   - {fileID: 1132191559}
   - {fileID: 1995538131}
@@ -55222,6 +55255,7 @@ Transform:
   - {fileID: 865588054}
   - {fileID: 1113978717}
   - {fileID: 536984456}
+  - {fileID: 1015476253}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1043520106
@@ -60458,7 +60492,7 @@ Transform:
   m_GameObject: {fileID: 1132191558}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.3965872, w: 0.9179971}
-  m_LocalPosition: {x: -8.39, y: 14.53, z: 0}
+  m_LocalPosition: {x: -8.39, y: 30.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -60480,6 +60514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ring: {fileID: 0}
+  cargoCapacity: 10
 --- !u!114 &1132191561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70614,7 +70649,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1025641805}
+  m_Father: {fileID: 1015476253}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1225403297
 GameObject:
@@ -71761,6 +71796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ring: {fileID: 0}
+  cargoCapacity: 10
 --- !u!114 &1315782549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71790,7 +71826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33812c97b9d3c43fcba3e028739bdf1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrustForce: 500
+  thrustForce: 800
   rotationSpeed: 1500
   damping: 2
   energyPerThrust: 0.05
@@ -72322,7 +72358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ship: {fileID: 2040559954}
   baseRadius: 3.5
-  maxPull: 2
+  maxPull: 6
   slots:
   - id: Turret
     startAngle: 5
@@ -78890,7 +78926,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1707638348}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.83, y: -3.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -78901,7 +78937,7 @@ Transform:
   - {fileID: 870184379}
   - {fileID: 596167229}
   - {fileID: 391293836}
-  m_Father: {fileID: 1025641805}
+  m_Father: {fileID: 1015476253}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1707638350
 MonoBehaviour:
@@ -78916,6 +78952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ring: {fileID: 0}
+  cargoCapacity: 10
 --- !u!114 &1707638351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91015,6 +91052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ring: {fileID: 0}
+  cargoCapacity: 10
 --- !u!114 &2040559956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91044,10 +91082,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33812c97b9d3c43fcba3e028739bdf1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrustForce: 1000
+  thrustForce: 1200
   rotationSpeed: 10000
   damping: 2
-  energyPerThrust: 0.01
+  energyPerThrust: 0.015
   alignmentThreshold: 10
 --- !u!114 &2040559958
 MonoBehaviour:
